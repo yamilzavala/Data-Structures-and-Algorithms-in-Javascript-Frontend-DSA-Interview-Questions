@@ -42,3 +42,25 @@ function removeDuplicatesNew(nums) {
 // Time Complexity - O(n)
 // Space Complexity - O(1)
 console.log(removeDuplicatesNew([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+
+//New approuch
+const removeDuplicatesWithTwoPointers = (arr) => {
+  let counter = 0;
+  let left = 0;
+  let right = 1;
+  while (left < arr.length) {
+    if (arr[left] !== arr[right]) {
+      if (right - left < 2) {
+        left++;
+        right++;
+      } else {
+        left = right;
+        right++;
+      }
+      counter += 1;
+    } else {
+      right++;
+    }
+  }
+  return counter;
+};
